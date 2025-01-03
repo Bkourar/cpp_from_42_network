@@ -1,45 +1,30 @@
-#include<iostream>
-#include <iomanip>
-#include <string>
-#include <limits>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bikourar <bikourar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/03 11:55:17 by bikourar          #+#    #+#             */
+/*   Updated: 2025/01/03 12:00:50 by bikourar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-class Contact	Add();
-void			Search(Contact c);
+#include "PhoneBook.hpp"
 
-typedef enum type {
-	empty,
-	nmber,
-	character,
-	no_print,
-	no_alpha,
-	space
-}	t_typerror;
+std::string	Contact::getFname() {return firstname;}
+std::string	Contact::getLname() {return lastname;}
+std::string	Contact::getNname() {return nickname;}
+std::string	Contact::getPnmber() {return phonenumber;}
+std::string	Contact::getDsecret() {return darckestsecret;}
+int		Phonebook::index;
+void	Phonebook::setcount() { index += 1;}
 
-class	Contact {
-	private:
-			std::string	firstname;
-			std::string	lastname;
-			std::string	nickname;
-			std::string	phonenumber;
-			std::string	darckestsecret;
-	public:
-			void		setdate(std::string input, int i);
-			std::string	getFname();
-			std::string	getLname();
-			std::string	getNname();
-			std::string	getPnmber();
-			std::string	getDsecret();
-};
-
-class	Phonebook {
-	private:
-			static int	index;
-			Contact		book[8];
-	public:
-			void	setcount();
-			void	setADD(Contact input);
-			void	getSEARCH();
-};
+void	Phonebook::setADD(Contact input) {
+	if (index > 8)
+		index = 1;
+	book[index - 1] = input;
+}
 
 void	Contact::setdate(std::string input, int i) {
 	if (i == 0)
@@ -54,19 +39,6 @@ void	Contact::setdate(std::string input, int i) {
 		darckestsecret = input;
 }
 
-std::string	Contact::getFname() {return firstname;}
-std::string	Contact::getLname() {return lastname;}
-std::string	Contact::getNname() {return nickname;}
-std::string	Contact::getPnmber() {return phonenumber;}
-std::string	Contact::getDsecret() {return darckestsecret;}
-int		Phonebook::index;
-void	Phonebook::setcount() { index += 1;}
-void	Phonebook::setADD(Contact input) { 
-
-	if (index > 8)
-		index = 1;
-	book[index - 1] = input;
-}
 void	Phonebook::getSEARCH() {
 	int in;
 
@@ -79,7 +51,7 @@ void	Phonebook::getSEARCH() {
 			break ;
 		std::cout << std::setw(10) << i;
 		Search(book[i]);
-		std::cout << "\n";
+		std::cout << std::endl;
 	}
 	std::cout << "\n entre your chose : ";
 	std::cin.clear();
@@ -92,7 +64,7 @@ void	Phonebook::getSEARCH() {
 		std::cout << book[in].getDsecret() << std::endl;
 	}
 	else {
-		std::cout << "not found \n";
+		std::cout << "not found " << std::endl;
 		return ;
 	}
 }
@@ -105,14 +77,14 @@ int main() {
 
 	while (1)
 	{
-		std::cout << "Welcome to phoneBook chose next !!! \n";
-		std::cout << "1 : ADD \n" << "2 : SEARCH \n" << "3 : EXIT \n";
+		std::cout << "Welcome to phoneBook chose next !!! " << std::endl;
+		std::cout << "1 : ADD \n" << "2 : SEARCH \n" << "3 : EXIT" << std::endl;
 		std::cout << "->> your chose What !? : ";
 		std::cin >> input;
 		if (std::cin.eof())
 			break ;
 		if (std::cin.fail()) {
-			std::cout << "Cin is fail \n";
+			std::cout << "Cin is fail" << std::endl;
 			continue ;
 		}
 		if (input == "ADD")
@@ -129,7 +101,7 @@ int main() {
 			std::cout << "empty\n";
 		std::cin.clear();
 	}
- 	return (std::cout<< "\nEXIT\n", 1);
+ 	return (std::cout<< "\nEXIT" << std::endl, 1);
 }
 
 void	Usr_message(int i)
@@ -149,22 +121,22 @@ void	Usr_message(int i)
 void	return_err(t_typerror err) {
 	
 	if (err == empty)
-		std::cout << "input is empty\n";
+		std::cout << "input is empty" << std::endl;
 	else if (err == nmber)
-		std::cout << "input has a nmber\n";
+		std::cout << "input has a nmber" << std::endl;
 	else if (err == no_alpha || err == character)
-		std::cout << "input has a character\n";
+		std::cout << "input has a character" << std::endl;
 	else if (err == no_print)
-		std::cout << "input has a not printable charater\n";
+		std::cout << "input has a not printable charater" << std::endl;
 	else if (err == space)
-		std::cout << "input has a white space\n";
+		std::cout << "input has a white space" << std::endl;
 }
 
 int	process_name(std::string str) {
 
 	if (str.empty())
 		return (return_err(empty), 1);
-	for (int i = 0; i < str.length(); i++) {
+	for (size_t i = 0; i < str.length(); i++) {
 		if (isdigit(str[i]))
 			return (return_err(nmber), 1);
 		if (!isalpha(str[i]))
@@ -177,17 +149,17 @@ int	process_NPD(std::string str, int i) {
 
 	if (str.empty())
 		return (return_err(empty), 1);
-	for (int j = 0; i == 2  && j < str.length(); j++) {
+	for (size_t j = 0; i == 2  && j < str.length(); j++) {
 		if (!isprint(str[j]))
 			return (return_err(no_print), 1);
 		if (isspace(str[j]))
 			return (return_err(space), 1);
 	}
-	for (int j = 0; i == 3 && j < str.length(); j++) {
+	for (size_t j = 0; i == 3 && j < str.length(); j++) {
 		if (!isdigit(str[j]))
 			return (return_err(character), 1);
 	}
-	for (int j = 0; i == 4 && j < str.length(); j++) {
+	for (size_t j = 0; i == 4 && j < str.length(); j++) {
 		if (!isprint(str[j]))
 			return (return_err(no_print), 1);
 	}
@@ -206,7 +178,7 @@ Contact	Add()
 		if (getline(std::cin, s).eof())
 			break ;
 		if (std::cin.fail()) {
-			std::cout << "Cin is fail \n";
+			std::cout << "Cin is fail" << std::endl;
 			--i;
 			continue ;
 		}
