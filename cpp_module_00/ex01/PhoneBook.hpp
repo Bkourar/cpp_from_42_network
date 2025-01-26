@@ -1,35 +1,22 @@
-#ifndef _PHONEBOOK_HPP
-#define _PHONEBOOK_HPP
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bikourar <bikourar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/23 09:45:06 by bikourar          #+#    #+#             */
+/*   Updated: 2025/01/23 14:31:15 by bikourar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include<iostream>
-#include <iomanip>
-#include <string>
-#include <limits>
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 
-typedef enum type {
-	empty,
-	nmber,
-	character,
-	no_print,
-	no_alpha,
-	space
-}	t_typerror;
-
-class	Contact {
-	private:
-			std::string	firstname;
-			std::string	lastname;
-			std::string	nickname;
-			std::string	phonenumber;
-			std::string	darckestsecret;
-	public:
-			void		setdate(std::string input, int i);
-			std::string	getFname();
-			std::string	getLname();
-			std::string	getNname();
-			std::string	getPnmber();
-			std::string	getDsecret();
-};
+# include "Contact.hpp"
+# include <iomanip>
+# include <string>
+# include <limits>
 
 class	Phonebook {
 	private:
@@ -41,7 +28,5 @@ class	Phonebook {
 			void	getSEARCH();
 };
 
-class Contact	Add();
-void			Search(Contact c);
 
 #endif
