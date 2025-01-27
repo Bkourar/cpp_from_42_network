@@ -1,14 +1,4 @@
-#include <iostream>
-
-class Harl {
-    public:
-            void complain( std::string level );
-    private:
-            void debug( void );
-            void info( void );
-            void warning( void );
-            void error( void );
-};
+#include "Harl.hpp"
 
 void Harl::debug( void ) {
     std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger."
@@ -37,10 +27,5 @@ void Harl::complain( std::string level ) {
 
     for (int i =0; i < 4; i++)
         if (str[i] == level)
-            (this->*ptr_fun[i])();}
-
-int main() {
-    Harl obj;
-
-    obj.complain("debug");
+            (this->*ptr_fun[i])();
 }
