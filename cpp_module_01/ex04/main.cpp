@@ -3,7 +3,7 @@
 #include <sstream>
 #include <string>
 
-std::string extendedReplace(std::string input)
+std::string	extendedReplace(std::string input)
 {
 	std::string	output;
 	size_t		last_found = std::string::npos;
@@ -22,14 +22,12 @@ int main(int ac, char **av) {
 		return (std::cout << "fails argument\n", 1);
 	std::string line;
 	std::string found_it = av[2];
-	std::string extended;
 	std::ifstream infile(av[1]);
 	if (!infile) {
 		std::cerr << "Error: File '" << av[1] << "' not found or Permission denied." << std::endl;
 		return 1;
 	}
-	extended = extendedReplace(av[1]);
-	std::ofstream outfile(extended);
+	std::ofstream outfile(extendedReplace(av[1]));
 	size_t n = -1;
 	while (getline(infile, line))
 	{

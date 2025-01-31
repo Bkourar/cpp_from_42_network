@@ -6,7 +6,7 @@
 /*   By: bikourar <bikourar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 17:31:31 by bikourar          #+#    #+#             */
-/*   Updated: 2025/01/26 17:31:32 by bikourar         ###   ########.fr       */
+/*   Updated: 2025/01/31 12:09:06 by bikourar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,18 @@
 #define ZOMBIE_HPP
 
 #include <iostream>
-#include <string>
 
 class Zombie {
 	private:
 		std::string name;
 	public:
 		void	announce(void);
-		Zombie (std::string str) {
-			name = str;
-		}
-		~Zombie () {
-			std::cout << name << "  life time is over" << std::endl;
-		}
+		Zombie (std::string str);
+		~Zombie ();
 };
 
 
-Zombie* newZombie(std::string name);
-void    randomChump(std::string name);
+Zombie*	newZombie(std::string name);
+void	randomChump(std::string name);
 
 #endif

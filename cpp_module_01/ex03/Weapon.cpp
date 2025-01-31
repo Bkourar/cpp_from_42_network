@@ -1,12 +1,13 @@
 #include "Weapon.hpp"
 
-Weapon::Weapon (const char *input) : message(input) {}
+Weapon::Weapon (std::string input) : type(input) {}
 
 Weapon::~Weapon () {
-    std::cout<< "weapon is over" << std::endl;
+	std::cout<< "weapon is over" << std::endl;
 }
 
-const char*    Weapon::getType () {return message;}
-void     Weapon::setType(const char *str) {
-    message = str;
+std::string	Weapon::getType () {return type;}
+
+void	Weapon::setType(std::string str) {
+	type = str;
 }

@@ -1,4 +1,4 @@
-NAME = Moar_brainz!
+NAME = HI_THIS_IS_BRAIN
 FLAGS = -Wall -Wextra -Werror
 VERSION = -std=c++98
 SRC = main.cpp

@@ -2,7 +2,6 @@
 #define ZOMBIE_HPP
 
 #include <iostream>
-#include <climits>
 
 class Zombie {
 	private:

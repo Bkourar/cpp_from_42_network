@@ -1,12 +1,10 @@
 #include "Zombie.hpp"
 
 int main() {
-    std::string name;
     Zombie      *Hpzombie;
     int         n;
 
     n = 5;
-    name = "anas";
     Hpzombie = zombieHorde(n, "bilal");
     if (Hpzombie == NULL)
         return (std::cout << "failed argement" << std::endl, 1);
