@@ -3,7 +3,7 @@
 HumanA::HumanA (std::string arr, Weapon &type_clube) : Aweapon(type_clube) , name(arr) {}
 
 HumanA::~HumanA() {
-	std::cout<< "humanA is over" << std::endl;
+	std::cout << "humanA is over" << std::endl;
 }
 
 void	HumanA::attack(void) {

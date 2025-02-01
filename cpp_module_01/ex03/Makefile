@@ -10,7 +10,7 @@ $(NAME) : $(OBJ)
 	c++ $(FLAGS) $(VERSION) -o $(NAME) $(OBJ)
 
 %.o : %.cpp HumanA.hpp HumanB.hpp Weapon.hpp
-	c++ $(FLAGS) -c $< -o $@
+	c++ $(FLAGS) $(VERSION) -c $< -o $@
 
 fclean : clean
 	rm -f $(NAME)

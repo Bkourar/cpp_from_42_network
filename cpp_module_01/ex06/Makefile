@@ -1,4 +1,4 @@
-NAME = Harl_filter
+NAME = harlFilter
 FLAGS = -Wall -Wextra -Werror
 VERSION = -std=c++98
 SRC = Harl.cpp main.cpp
@@ -10,7 +10,7 @@ $(NAME) : $(OBJ)
 	c++ $(FLAGS) $(VERSION) -o $(NAME) $(OBJ)
 
 %.o : %.cpp Harl.hpp
-	c++ $(FLAGS) -c $< -o $@
+	c++ $(FLAGS) $(VERSION) -c $< -o $@
 
 fclean : clean
 	rm -f $(NAME)

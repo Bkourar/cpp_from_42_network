@@ -22,3 +22,40 @@ void Harl::error( void ) {
     std::cout << "[ ERROR ]" << std::endl;
     std::cout << "This is unacceptable! I want to speak to the manager now.\n";
 }
+
+int levels(std::string input)
+{
+    std::string data[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+
+    for (int i = 0; i < 4; i++)
+        if (data[i] == input)
+            return (i + 1);
+    return (0);
+}
+
+void Harl::complain( std::string level ) {
+
+    int j = levels(level);
+    void (Harl::*ptr_fun[4])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+    switch (j)
+    {
+        case 1:
+            for (int i = j; i <= 4; i++)
+                (this->*ptr_fun[i - 1])();
+            break ;
+        case 2:
+            for (int i = j; i <= 4; i++)
+                (this->*ptr_fun[i - 1])();
+            break ;
+        case 3:
+            for (int i = j; i <= 4; i++)
+                (this->*ptr_fun[i - 1])();
+            break ;
+        case 4:
+            for (int i = j; i <= 4; i++)
+                (this->*ptr_fun[i - 1])();
+            break ;
+        default:
+            std::cout << "[ Probably complaining about insignificant problems ]\n"; 
+    }
+}
