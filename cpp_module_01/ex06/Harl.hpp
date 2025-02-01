@@ -5,7 +5,7 @@
 
 class Harl {
 	public:
-		void complain( std::string level );
+		void complain(const std::string &level );
 	private:
 		void debug( void );
 		void info( void );
@@ -13,6 +13,6 @@ class Harl {
 		void error( void );
 };
 
-int	levels(std::string input);
+int	levels(const std::string &input);
 
 #endif

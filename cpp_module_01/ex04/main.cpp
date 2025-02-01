@@ -9,8 +9,8 @@ int main(int ac, char **av) {
 		return (std::cout << "fails argument\n", 1);
 	std::string line;
 	std::string extended = av[1];
-	std::string found_it = av[2];
-	std::ifstream infile(av[1]);
+	const std::string &found_it = av[2];
+	std::ifstream infile(extended.c_str());
 	if (!infile) {
 		std::cerr << "Error: File '" << av[1] << "' not found or Permission denied." << std::endl;
 		return 1;
@@ -24,8 +24,9 @@ int main(int ac, char **av) {
 		else if (line.empty())
 			line.push_back('\n');
 		while (1) {
-			n = line.find(found_it, n + 1);
-			if (n != std::string::npos) {
+			if (!found_it.empty())
+				n = line.find(found_it, n + 1);
+			if (!found_it.empty() && n != std::string::npos) {
 				line.erase(n, found_it.length());
 				line.insert(n, av[3]);
 				n += line.length();
