@@ -7,12 +7,12 @@ Fixed::Fixed() : _fixedPointValue(0) {
 }
 
 Fixed::Fixed(const int val) : _fixedPointValue(val << _fractionalBits) {
-    std::cout << "Int constructor called" << std::endl;
+	std::cout << "Int constructor called" << std::endl;
 }
 
 
-Fixed::Fixed(const float fract) : _fixedPointValue((int)(fract * (1 << _fractionalBits))) {
-    std::cout << "Float constructor called" << std::endl;
+Fixed::Fixed(const float fract) : _fixedPointValue((int)roundf(fract * (1 << _fractionalBits))) {
+	std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &other) {
@@ -21,7 +21,7 @@ Fixed::Fixed(const Fixed &other) {
 }
 
 Fixed&	Fixed::operator=(const Fixed &other) {
-	if (this != &other) {  // prevent self-assignment
+	if (this != &other) {
 		std::cout << "Copy assignment operator called" << std::endl;
 		_fixedPointValue = other.getRawBits();
 	}
@@ -33,7 +33,6 @@ Fixed::~Fixed() {
 }
 
 int		Fixed::getRawBits(void) const {
-	std::cout << "getRawBits member function called" << std::endl;
 	return _fixedPointValue;
 }
 
@@ -42,11 +41,15 @@ void	Fixed::setRawBits(int const raw) {
 }
 
 float	Fixed::toFloat(void) const {
-    return (float)(_fixedPointValue) / (1 << _fractionalBits);
+	return (float)(_fixedPointValue) / (1 << _fractionalBits);
 }
 
 int		Fixed::toInt(void) const {
-    return _fixedPointValue >> _fractionalBits;
+	return _fixedPointValue >> _fractionalBits;
 }
 
+std::ostream& operator<<(std::ostream& strm, const Fixed& ob) {
+	strm << ob.toFloat();
+	return strm;
+}
 

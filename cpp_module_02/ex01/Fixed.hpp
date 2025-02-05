@@ -2,6 +2,8 @@
 #define FIXED_HPP
 
 # include <iostream>
+# include <fstream>
+# include <cmath>
 
 class Fixed {
 	public:

@@ -24,7 +24,7 @@ int main (void) {
     Point a(0.1, 0.5);
     Point b(0.4, 0.3);
     Point c(0, 0.1);
-    Point point(0.1, 0.3);
+    Point point(0.1, 0.4);
     bool logic = bsp(a, b, c, point);
     if (logic == true)
         std::cout << "True" << std::endl;
