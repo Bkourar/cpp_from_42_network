@@ -17,7 +17,7 @@ class ClapTrap {
 		unsigned int	getHitPoint ( void ) const;
 		unsigned int	getEnergyPoint ( void ) const;
 		unsigned int	getAttackDamage ( void ) const;
-	private:
+	protected:
 		std::string		Name;
 		unsigned int	HitPoint;
 		unsigned int	EnergyPoint;

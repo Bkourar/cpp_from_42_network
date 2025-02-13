@@ -3,8 +3,6 @@
 
 int	main ( void ) {
 
-
-
 	ScavTrap clap2("omar");
 	
 	clap2.attack("omar");
