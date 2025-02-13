@@ -1,10 +1,10 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap () : HitPoint(10), EnergyPoint(10), AttackDamage(0) {
+ClapTrap::ClapTrap () : HitPoint(100), EnergyPoint(50), AttackDamage(30) {
 	std::cout << "Default Conestructor  is called" << std::endl;
 };
 
-ClapTrap::ClapTrap (std::string name) : Name(name), HitPoint(10), EnergyPoint(10), AttackDamage(0) {
+ClapTrap::ClapTrap (std::string name) : Name(name), HitPoint(100), EnergyPoint(50), AttackDamage(30) {
 	std::cout << "paramater Conestructor  is called" << std::endl;
 };
 
@@ -40,7 +40,7 @@ void	ClapTrap::attack(const std::string& target) {
 }
 
 void	ClapTrap::takeDamage(unsigned int amount) {	
-	if (EnergyPoint == 0 || HitPoint == 0) {
+	if (HitPoint == 0) {
 		std::cout << "ClapTrap " << Name << " has no hit points left to take damage!" << std::endl;
 		return ;
 	}

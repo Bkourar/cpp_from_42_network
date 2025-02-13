@@ -40,7 +40,7 @@ void	ClapTrap::attack(const std::string& target) {
 }
 
 void	ClapTrap::takeDamage(unsigned int amount) {	
-	if (EnergyPoint == 0 || HitPoint == 0) {
+	if (HitPoint == 0) {
 		std::cout << "ClapTrap " << Name << " has no hit points left to take damage!" << std::endl;
 		return ;
 	}

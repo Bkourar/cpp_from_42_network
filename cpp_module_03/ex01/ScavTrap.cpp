@@ -8,6 +8,9 @@ ScavTrap::ScavTrap () : ClapTrap() {
 }
 
 ScavTrap::ScavTrap (std::string name) : ClapTrap(name) {
+	HitPoint = 100;
+	EnergyPoint = 50;
+	AttackDamage = 20;
 	std::cout << "ScavTrap paramater Conestructor is called" << std::endl;
 }
 
