@@ -1,15 +1,15 @@
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap () : HitPoint(10), EnergyPoint(10), AttackDamage(0) {
-	std::cout << "Default Conestructor  is called" << std::endl;
+	std::cout << "ClapTrap Default Conestructor  is called" << std::endl;
 };
 
 ClapTrap::ClapTrap (std::string name) : Name(name), HitPoint(10), EnergyPoint(10), AttackDamage(0) {
-	std::cout << "paramater Conestructor  is called" << std::endl;
+	std::cout << "ClapTrap paramater Conestructor  is called" << std::endl;
 };
 
 ClapTrap::ClapTrap (const ClapTrap& ob) {
-	std::cout << "copy Conestructor  is called" << std::endl;
+	std::cout << "ClapTrap copy Conestructor  is called" << std::endl;
 	*this = ob;
 };
 
@@ -25,29 +25,29 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& ob) {
 };
 
 ClapTrap::~ClapTrap() {
-	std::cout << "Default Destructor is called" << std::endl;
+	std::cout << "ClapTrap Default Destructor is called" << std::endl;
 }
 
 void	ClapTrap::attack(const std::string& target) {
 	if (HitPoint == 0 || EnergyPoint == 0) {
-		std::cout << "attack is called you don't have energy " << std::endl;
+		std::cout << "ClapTrap attack  you don't have energy " << std::endl;
 		return ;
 	}
-	std::cout << "attack is called on " << target << " causing " << AttackDamage << " points of damage!"<< std::endl;
+	std::cout << "ClapTrap attack on " << target << " causing " << AttackDamage << " points of damage!"<< std::endl;
 	
 	EnergyPoint--;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount) {	
 	if (EnergyPoint == 0 || HitPoint == 0) {
-		std::cout << "takeDamage is called you don't have energy " << std::endl;
+		std::cout << "ClapTrap takeDamage is called you don't have energy " << std::endl;
 		return ;
 	}
 	if (HitPoint >= amount)
 		HitPoint -= amount;
 	else
 		HitPoint = 0;
-	std::cout << "takeDamage of " << this->getName() << " Hit point is " << HitPoint << std::endl;
+	std::cout << "ClapTrap takeDamage of " << this->getName() << " Hit point is " << HitPoint << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount) {
@@ -57,7 +57,7 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	}
 	HitPoint += amount;
 	EnergyPoint--;
-	std::cout << "beRepaired " << this->getName() << " Hit point is " << HitPoint << " Energypoint " << EnergyPoint << std::endl;
+	std::cout << "ClapTrap beRepaired " << this->getName() << " Hit point is " << HitPoint << " Energypoint " << EnergyPoint << std::endl;
 }
 
 std::string	ClapTrap::getName ( void ) const {
