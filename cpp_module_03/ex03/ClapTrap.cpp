@@ -1,17 +1,17 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap () : HitPoint(100), EnergyPoint(50), AttackDamage(30) {
+ClapTrap::ClapTrap () : HitPoint(10), EnergyPoint(10), AttackDamage(0) {
 	std::cout << "Default Conestructor  is called" << std::endl;
-};
+}
 
-ClapTrap::ClapTrap (std::string name) : Name(name), HitPoint(100), EnergyPoint(50), AttackDamage(30) {
+ClapTrap::ClapTrap (std::string name) : Name(name), HitPoint(10), EnergyPoint(10), AttackDamage(0) {
 	std::cout << "paramater Conestructor  is called" << std::endl;
-};
+}
 
 ClapTrap::ClapTrap (const ClapTrap& ob) {
 	std::cout << "copy Conestructor  is called" << std::endl;
 	*this = ob;
-};
+}
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap& ob) {
 	std::cout << "copy assignment operator is called" << std::endl;
@@ -22,7 +22,7 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& ob) {
 		this->HitPoint = ob.HitPoint;
 	}
 	return *this;
-};
+}
 
 ClapTrap::~ClapTrap() {
 	std::cout << "Default Destructor is called" << std::endl;

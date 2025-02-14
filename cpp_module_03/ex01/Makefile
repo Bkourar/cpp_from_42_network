@@ -1,5 +1,5 @@
-NAME = Aaaaand..._OPEN!
-FLAGS = -Wall -Wextra -Werror
+NAME = Serena_my_love!
+FLAGS = -Wall -Wextra -Werror -pedantic
 VERSION = -std=c++98
 SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
 OBJ = $(SRC:.cpp=.o)

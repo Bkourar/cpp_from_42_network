@@ -2,16 +2,16 @@
 
 ClapTrap::ClapTrap () : HitPoint(10), EnergyPoint(10), AttackDamage(0) {
 	std::cout << "Default Conestructor  is called" << std::endl;
-};
+}
 
 ClapTrap::ClapTrap (std::string name) : Name(name), HitPoint(10), EnergyPoint(10), AttackDamage(0) {
 	std::cout << "paramater Conestructor  is called" << std::endl;
-};
+}
 
 ClapTrap::ClapTrap (const ClapTrap& ob) {
 	std::cout << "copy Conestructor  is called" << std::endl;
 	*this = ob;
-};
+}
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap& ob) {
 	std::cout << "copy assignment operator is called" << std::endl;
@@ -22,7 +22,7 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& ob) {
 		this->HitPoint = ob.HitPoint;
 	}
 	return *this;
-};
+}
 
 ClapTrap::~ClapTrap() {
 	std::cout << "Default Destructor is called" << std::endl;
@@ -53,7 +53,8 @@ void	ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void	ClapTrap::beRepaired(unsigned int amount) {
-	if (EnergyPoint <= 0) {
+
+	if (EnergyPoint == 0) {
 		std::cout << "ClapTrap " << Name << " cannot repair itself, it's out of energy!" << std::endl;
 		return ;
 	}

@@ -1,4 +1,4 @@
-NAME = Aaaaand..._OPEN!
+NAME = Repetitive_work
 FLAGS = -Wall -Wextra -Werror
 VERSION = -std=c++98
 SRC = main.cpp ClapTrap.cpp FragTrap.cpp

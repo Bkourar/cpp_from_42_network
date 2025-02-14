@@ -5,7 +5,7 @@ FragTrap::FragTrap () : ClapTrap() {
 	HitPoint = 100;
 	EnergyPoint = 100;
 	AttackDamage = 30;
-};
+}
 
 FragTrap::FragTrap (std::string name) : ClapTrap(name) {
 	HitPoint = 100;
@@ -30,15 +30,4 @@ FragTrap::~FragTrap () {
 
 void	FragTrap::highFivesGuys ( void ) {
     std::cout << "FragTrap " << Name << " requests a HIGH FIVE! :D" << std::endl;
-}
-
-
-void	FragTrap::attack(const std::string& target) {
-        if (HitPoint == 0 || EnergyPoint == 0) {
-            std::cout << "FragTrap " << Name << " cannot attack, it's out of health or energy!" << std::endl;
-            return;
-        }
-        EnergyPoint--;
-        std::cout << "FragTrap " << Name << " attacks " << target 
-                  << ", causing " << AttackDamage << " points of damage!" << std::endl;
 }

@@ -5,6 +5,7 @@ int		main()
     std::cout << "\ndiamond construction: " << std::endl;
     DiamondTrap		di2("diamond");
 
+
     std::cout << "\nscav construction: " << std::endl;
     ScavTrap		scav("scav");
 

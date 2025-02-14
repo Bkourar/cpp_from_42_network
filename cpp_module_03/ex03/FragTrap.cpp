@@ -2,7 +2,7 @@
 
 FragTrap::FragTrap (){
 	std::cout << "FragTrap Default Conestructor  is called" << std::endl;
-};
+}
 
 FragTrap::FragTrap (std::string name)  {
 	Name = name;

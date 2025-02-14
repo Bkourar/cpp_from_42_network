@@ -1,4 +1,4 @@
-NAME = Aaaaand..._OPEN!
+NAME = Now_it’s_weird!
 FLAGS = -Wall -Wextra -Werror
 VERSION = -std=c++98
 SRC = main.cpp ClapTrap.cpp FragTrap.cpp ScavTrap.cpp DiamondTrap.cpp
