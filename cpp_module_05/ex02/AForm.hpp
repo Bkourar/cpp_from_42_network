@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bikourar <bikourar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/09 14:55:18 by bikourar          #+#    #+#             */
+/*   Updated: 2025/04/21 11:58:56 by bikourar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef AFORM_HPP
 #define AFORM_HPP
 
@@ -11,21 +23,21 @@ class AForm {
 		AForm(std::string name, bool indic, int signal, int val);
 		AForm(const AForm &);
 		AForm& operator=(const AForm &);
-		~AForm();
+		virtual ~AForm();
 		std::string			getName() const;
 		int					getSign() const;
-		int		getGrade() const;
+		int					getexec() const;
 		bool				getIndicating() const;
-		void				incrementGrade();
-		void				decrementGrade();
+		void				incrementexec();
+		void				decrementexec();
 		void				beSigned(Bureaucrat &);
-		virtual void		execute(Bureaucrat const & executor) const = 0;
+		virtual void		execute(Bureaucrat const &executor) const = 0;
 		void				executeForm(AForm const &form);
-		class GradeTooHighException : public std::exception {
+		class execTooHighException : public std::exception {
 			public:
 				const char* what() const throw();
 		};
-		class GradeTooLowException : public std::exception {
+		class execTooLowException : public std::exception {
 			public:
 				const char* what() const throw();
 		};
@@ -44,8 +56,8 @@ class AForm {
 	private :
 		const std::string	Name;
 		bool				indicating;
-		int					sign;	// sign 
-		int					Grade;	// execute
+		const int			sign;
+		const int			exec;
 };
 
 std::ostream&	operator<<(std::ostream& strm, const AForm&  obj);

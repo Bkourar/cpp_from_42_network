@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bikourar <bikourar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/09 14:54:45 by bikourar          #+#    #+#             */
+/*   Updated: 2025/04/21 11:34:33 by bikourar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : Name("bureaqrate") {
-	Grade = 150;
+Bureaucrat::Bureaucrat() : Name("bureaqrate") , Grade(150) {
 }
 
 Bureaucrat::Bureaucrat(const std::string name, int val) : Name(name) {
@@ -37,15 +48,17 @@ int	Bureaucrat::getGrade() const {
 
 void	Bureaucrat::incrementGrade() {
 
-	if (Grade < 1)
+	if (Grade > 1)
+		Grade--;
+	else
 		throw GradeTooHighException();
-	Grade--;
 }
 
 void	Bureaucrat::decrementGrade() {
-	if (Grade > 150)
+	if (Grade < 150)
+		Grade++;
+	else
 		throw GradeTooLowException();
-	Grade++;
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {

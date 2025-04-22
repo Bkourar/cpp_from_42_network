@@ -1,25 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bikourar <bikourar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/09 14:57:09 by bikourar          #+#    #+#             */
+/*   Updated: 2025/04/20 11:37:08 by bikourar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : Name("bureaqrate") {
-	Grade = 150;
+	exec = 150;
 }
 
 Bureaucrat::Bureaucrat(const std::string name, int val) : Name(name) {
 
 	if (val > 150)
-		throw GradeTooLowException();
+		throw execTooLowException();
 	else if (val < 1)
-		throw GradeTooHighException();
-	Grade = val;
+		throw execTooHighException();
+	exec = val;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& obj) {
-	this->Grade = obj.getGrade();
+	this->exec = obj.getexec();
 }
 
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& obj) {
 	if (this != &obj) {
-		this->Grade = obj.getGrade();
+		this->exec = obj.getexec();
 	}
 	return *this;
 }
@@ -31,29 +43,34 @@ std::string		Bureaucrat::getName() const {
 	return Name;
 }
 
-int	Bureaucrat::getGrade() const {
-	return Grade;
+int	Bureaucrat::getexec() const {
+	return exec;
 }
 
-void	Bureaucrat::incrementGrade() {
+void	Bureaucrat::incrementexec() {
 
-	if (Grade > 1) {
-		Grade--;
+	if (exec > 1) {
+		exec--;
 	} else {
-		throw GradeTooHighException();
+		throw execTooHighException();
 	}
 }
 
-void	Bureaucrat::decrementGrade() {
-	if (Grade < 150) {
-		Grade++;
+void	Bureaucrat::decrementexec() {
+	if (exec < 150) {
+		exec++;
 	} else {
-		throw GradeTooLowException();
+		throw execTooLowException();
 	}
 }
 
 void	Bureaucrat::signForm(AForm &ob) {
-	ob.beSigned(*this);
+	if (ob.getIndicating() == false)
+		ob.beSigned(*this);
+	else {
+		std::cout << "bureaucrat " << this->getName() << " before signed " << ob.getName() << std::endl;
+		return ;
+	}
 	std::cout << "bureaucrat " << this->getName() << " signed " << ob.getName() << std::endl;
 }
 
@@ -61,15 +78,15 @@ void	Bureaucrat::executeForm(AForm const &form) const {
 	form.execute(*this);
 	std::cout << "bureaucrat " << this->getName() << " executed " << form.getName() << std::endl;
 }
-const char* Bureaucrat::GradeTooHighException::what() const throw() {
-    return "Bureaucrat grade is too high!";
+const char* Bureaucrat::execTooHighException::what() const throw() {
+    return "Bureaucrat exec is too high!";
 }
 
-const char* Bureaucrat::GradeTooLowException::what() const throw() {
-    return "Bureaucrat grade is too low!";
+const char* Bureaucrat::execTooLowException::what() const throw() {
+    return "Bureaucrat exec is too low!";
 }
 
 std::ostream&	operator<<(std::ostream& strm, const Bureaucrat & obj) {
-	strm << obj.getName() << ", bureaucrat grade " << obj.getGrade() << std::endl;
+	strm << obj.getName() << ", bureaucrat exec " << obj.getexec() << std::endl;
 	return strm;
 }

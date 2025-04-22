@@ -1,49 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Form.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bikourar <bikourar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/09 14:55:02 by bikourar          #+#    #+#             */
+/*   Updated: 2025/04/21 12:03:35 by bikourar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Form.hpp"
 
 Form::Form() : Name("form"), indicating(false), sign(1), Grade(150) {
 
 }
 
-Form::Form(const std::string name, bool indic, int signal, int val) : Name(name), indicating(indic), sign(signal) {
-	if (val < 1)
+Form::Form(const std::string name, bool indic, int signd, int val) :  Name(name), indicating(indic), sign(signd), Grade(val) {
+	if (val < 1 || signd < 1)
 		throw Form::GradeTooHighException();
-	else if (val > 150)
+	else if (val > 150 || signd > 150)
 		throw Form::GradeTooLowException();
-	Grade = val;
 }
 
-Form::Form(const Form &ob) {
+Form::Form(const Form &ob) : Name(ob.getName()), sign(ob.getSign()), Grade(ob.getGrade()) {
 	this->indicating = ob.getIndicating();
-	this->Grade = ob.getGrade();
 }
 
 Form& Form::operator=(const Form &ob) {
 	if (this != &ob) {
-		this->indicating = ob.getIndicating();	
-		this->Grade = ob.getGrade();
+		this->indicating = ob.getIndicating();
 	}
 	return *this;
 }
 
 Form::~Form() {
 
-}
-
-void	Form::incrementGrade() {
-
-	if (Grade > 1) {
-		Grade--;
-	} else {
-		throw GradeTooHighException();
-	}
-}
-
-void	Form::decrementGrade() {
-	if (Grade < 150) {
-		Grade++;
-	} else {
-		throw GradeTooLowException();
-	}
 }
 
 std::string	Form::getName() const {
@@ -72,10 +64,8 @@ const char* Form::GradeTooLowException::what() const throw() {
 }
 
 void	Form::beSigned(Bureaucrat& bur) {
-
-	if (this->getSign() >= bur.getGrade()) {
+	if (this->getSign() >= bur.getGrade())
 		this->indicating = true;
-	}
 	else
 		throw Form::GradeTooLowException();
 }

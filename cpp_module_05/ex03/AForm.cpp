@@ -1,49 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bikourar <bikourar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/09 14:57:02 by bikourar          #+#    #+#             */
+/*   Updated: 2025/04/21 12:00:42 by bikourar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "AForm.hpp"
 
-AForm::AForm() : Name("Aform"), indicating(false), sign(1), Grade(150) {
+AForm::AForm() : Name("Aform"), indicating(false), sign(1), exec(150) {
 
 }
 
-AForm::AForm(const std::string name, bool indic, int signal, int val) : Name(name), indicating(indic), sign(signal) {
-	if (val < 1)
-		throw AForm::GradeTooHighException();
-	else if (val > 150)
-		throw AForm::GradeTooLowException();
-	Grade = val;
+AForm::AForm(const std::string name, bool indic, int signd, int val) :  Name(name), indicating(indic), sign(signd), exec(val) {
+	if (val < 1 || signd < 1)
+		throw AForm::execTooHighException();
+	else if (val > 150 || signd > 150)
+		throw AForm::execTooLowException();
 }
 
-AForm::AForm(const AForm &ob) {
+AForm::AForm(const AForm &ob) : Name(ob.getName()), sign(ob.getSign()), exec(ob.getexec()) {
 	this->indicating = ob.getIndicating();
-	this->Grade = ob.getGrade();
 }
 
 AForm& AForm::operator=(const AForm &ob) {
 	if (this != &ob) {
-		this->indicating = ob.getIndicating();	
-		this->Grade = ob.getGrade();
+		this->indicating = ob.getIndicating();
 	}
 	return *this;
 }
 
 AForm::~AForm() {
 
-}
-
-void	AForm::incrementGrade() {
-
-	if (Grade > 1) {
-		Grade--;
-	} else {
-		throw GradeTooHighException();
-	}
-}
-
-void	AForm::decrementGrade() {
-	if (Grade < 150) {
-		Grade++;
-	} else {
-		throw GradeTooLowException();
-	}
 }
 
 std::string	AForm::getName() const {
@@ -54,8 +46,8 @@ int			AForm::getSign() const {
 	return sign;
 }
 
-int AForm::getGrade() const {
-	return Grade;
+int AForm::getexec() const {
+	return exec;
 }
 
 bool	AForm::getIndicating() const {
@@ -63,12 +55,12 @@ bool	AForm::getIndicating() const {
 }
 
 
-const char* AForm::GradeTooHighException::what() const throw() {
-    return "AForm grade is too high!";
+const char* AForm::execTooHighException::what() const throw() {
+    return "AForm exec is too high!";
 }
 
-const char* AForm::GradeTooLowException::what() const throw() {
-    return "AForm grade is too low!";
+const char* AForm::execTooLowException::what() const throw() {
+    return "AForm exec is too low!";
 }
 
 const char* AForm::FailedFileException::what() const throw() {
@@ -80,7 +72,7 @@ const char* AForm::SignException::what() const throw() {
 }
 
 const char* AForm::AcceptSignException::what() const throw() {
-    return "Bureaucrat's grade is too low to execute this form";
+    return "Bureaucrat's exec is too low toexecute this form";
 }
 
 const char* AForm::DefaultException::what() const throw() {
@@ -89,7 +81,7 @@ const char* AForm::DefaultException::what() const throw() {
 
 void	AForm::beSigned(Bureaucrat& bur) {
 
-	if (this->getSign() >= bur.getGrade()) {
+	if (this->getSign() >= bur.getexec()) {
 			this->indicating = true;
 	}
 	else
@@ -97,7 +89,7 @@ void	AForm::beSigned(Bureaucrat& bur) {
 }
 
 std::ostream&	operator<<(std::ostream& strm, const AForm & obj) {
-	strm << obj.getName() << ", AForm grade " << obj.getGrade() << " indicating " << obj.getIndicating() 
+	strm << obj.getName() << ", AForm exec " << obj.getexec() << " indicating " << obj.getIndicating() 
 	<< " sign " << obj.getSign() << std::endl;
 	return strm;
 }

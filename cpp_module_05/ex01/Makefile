@@ -1,4 +1,4 @@
-NAME = bureaucrat
+NAME = a.out
 FLAGS = -Wall -Wextra -Werror
 VERSION = -std=c++98
 SRC = main.cpp Bureaucrat.cpp Form.cpp

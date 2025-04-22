@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bikourar <bikourar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/09 14:54:48 by bikourar          #+#    #+#             */
+/*   Updated: 2025/04/21 11:34:40 by bikourar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef _BUREAUCRAT_HPP
 # define _BUREAUCRAT_HPP
 
@@ -12,7 +24,7 @@ class Bureaucrat {
 		~Bureaucrat();
 		Bureaucrat& operator=(const Bureaucrat &);
 		std::string			getName() const ;
-		int		getGrade() const ;
+		int					getGrade() const ;
 		void				incrementGrade();
 		void				decrementGrade();
 		class GradeTooHighException : public std::exception {
@@ -25,7 +37,7 @@ class Bureaucrat {
 		};
 	private :
 		const std::string		Name;
-		int			Grade;
+		int				Grade;
 };
 
 std::ostream&	operator<<(std::ostream& strm, const Bureaucrat&  obj);

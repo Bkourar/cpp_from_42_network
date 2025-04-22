@@ -1,4 +1,4 @@
-NAME = bureaucrat
+NAME = a.out
 INC = AForm.hpp \
 	Bureaucrat.hpp \
 	PresidentialPardonForm.hpp \
